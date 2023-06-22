@@ -5,11 +5,7 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steam Desktop Authenticator", "Steam Desktop Authenticator.csproj", "{0F37C513-9AF4-42C8-9CE9-F9B3BFA55E4E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SteamAuth", "..\..\NEW PANEL\SteamAuth\SteamAuth.csproj", "{008BD387-3FCA-48A4-899B-3BBF6B5946A2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CounterBot", "..\..\TM-BoT 2+\CounterBot.csproj", "{62D64BCB-9031-4B92-9DDC-86EFE594F1AA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferBot", "..\..\TransferBot\TransferBot.csproj", "{D19A6783-73B4-426B-8036-AF58D2F85FE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SteamAuth", "..\lib\SteamAuth\SteamAuth.csproj", "{008BD387-3FCA-48A4-899B-3BBF6B5946A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
