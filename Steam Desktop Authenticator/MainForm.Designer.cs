@@ -45,7 +45,6 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuImportMaFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuImportAndroid = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.menuQuit = new System.Windows.Forms.ToolStripMenuItem();
@@ -214,42 +213,34 @@
             // importAccountToolStripMenuItem
             // 
             this.importAccountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuImportMaFile,
-            this.menuImportAndroid});
+            this.menuImportMaFile});
             this.importAccountToolStripMenuItem.Name = "importAccountToolStripMenuItem";
-            this.importAccountToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.importAccountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importAccountToolStripMenuItem.Text = "Импорт аккаунта";
             // 
             // menuImportMaFile
             // 
             this.menuImportMaFile.Name = "menuImportMaFile";
-            this.menuImportMaFile.Size = new System.Drawing.Size(186, 22);
+            this.menuImportMaFile.Size = new System.Drawing.Size(180, 22);
             this.menuImportMaFile.Text = "From maFile";
             this.menuImportMaFile.Click += new System.EventHandler(this.menuImportMaFile_Click);
-            // 
-            // menuImportAndroid
-            // 
-            this.menuImportAndroid.Name = "menuImportAndroid";
-            this.menuImportAndroid.Size = new System.Drawing.Size(186, 22);
-            this.menuImportAndroid.Text = "From Android Device";
-            this.menuImportAndroid.Click += new System.EventHandler(this.menuImportAndroid_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // menuSettings
             // 
             this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(169, 22);
+            this.menuSettings.Size = new System.Drawing.Size(180, 22);
             this.menuSettings.Text = "Настройки";
             this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
             // 
             // menuQuit
             // 
             this.menuQuit.Name = "menuQuit";
-            this.menuQuit.Size = new System.Drawing.Size(169, 22);
+            this.menuQuit.Size = new System.Drawing.Size(180, 22);
             this.menuQuit.Text = "Выход";
             this.menuQuit.Click += new System.EventHandler(this.menuQuit_Click);
             // 
@@ -471,7 +462,6 @@
         private System.Windows.Forms.ToolStripComboBox trayAccountList;
         private System.Windows.Forms.ToolStripMenuItem importAccountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuImportMaFile;
-        private System.Windows.Forms.ToolStripMenuItem menuImportAndroid;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.TextBox txtAccSearch;
         private System.Windows.Forms.Label label1;

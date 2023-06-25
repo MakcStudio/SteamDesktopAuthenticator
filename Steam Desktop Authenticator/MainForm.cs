@@ -404,27 +404,28 @@ namespace Steam_Desktop_Authenticator
 
         private async void timerTradesPopup_Tick(object sender, EventArgs e)
         {
-            if (currentAccount == null || popupFrm.Visible) return;
+            if (currentAccount == null || (popupFrm != null && popupFrm.Visible)) return;
             if (!confirmationsSemaphore.Wait(0))
             {
                 return; //Only one thread may access this critical section at once. Mutex is a bad choice here because it'll cause a pileup of threads.
             }
 
-            List<Confirmation> confs = new List<Confirmation>();
-            Dictionary<SteamGuardAccount, List<Confirmation>> autoAcceptConfirmations = new Dictionary<SteamGuardAccount, List<Confirmation>>();
-
-            SteamGuardAccount[] accs =
-                manifest.CheckAllAccounts ? allAccounts : new SteamGuardAccount[] { currentAccount };
-
             try
             {
+                Dictionary<SteamGuardAccount, List<Confirmation>> confs = new Dictionary<SteamGuardAccount, List<Confirmation>>();
+                //List<Confirmation> confs = new List<Confirmation>();
+                Dictionary<SteamGuardAccount, List<Confirmation>> autoAcceptConfirmations = new Dictionary<SteamGuardAccount, List<Confirmation>>();
+
+                SteamGuardAccount[] accs =
+                    manifest.CheckAllAccounts ? allAccounts : new SteamGuardAccount[] { currentAccount };
+
                 lblStatus.Text = "Проверка подтверждений...";
 
                 foreach (var acc in accs)
                 {
                     try
                     {
-                        Confirmation[] tmp = currentAccount.FetchConfirmations();
+                        Confirmation[] tmp = acc.FetchConfirmations();
                         foreach (var conf in tmp)
                         {
                             if ((conf.ConfType == Confirmation.ConfirmationType.MarketSellTransaction && manifest.AutoConfirmMarketTransactions) ||
@@ -435,7 +436,12 @@ namespace Steam_Desktop_Authenticator
                                 autoAcceptConfirmations[acc].Add(conf);
                             }
                             else
-                                confs.Add(conf);
+                            {
+                                if (!confs.ContainsKey(acc))
+                                    confs[acc] = new List<Confirmation>();
+                                confs[acc].Add(conf);
+                            }
+                            //confs.Add(conf);
                         }
                     }
                     catch (SteamGuardAccount.WGTokenInvalidException)
@@ -447,10 +453,14 @@ namespace Steam_Desktop_Authenticator
                     catch (SteamGuardAccount.WGTokenExpiredException)
                     {
                         //Prompt to relogin
-                        PromptRefreshLogin(currentAccount);
+                        PromptRefreshLogin(acc);
                         break; //Don't bombard a user with login refresh requests if they have multiple accounts. Give them a few seconds to disable the autocheck option if they want.
                     }
                     catch (WebException)
+                    {
+
+                    }
+                    catch (Exception ex)
                     {
 
                     }
@@ -460,15 +470,30 @@ namespace Steam_Desktop_Authenticator
 
                 if (confs.Count > 0)
                 {
-                    popupFrm.Confirmations = confs.ToArray();
-                    popupFrm.Popup();
+                    foreach (var acc in confs.Keys)
+                    {
+                        try
+                        {
+                            popupFrm.Account = acc;
+                            popupFrm.Confirmations = confs[acc].ToArray();
+                            popupFrm.Popup();
+                        }
+                        catch (Exception ex) { popupFrm = new TradePopupForm(); }
+                    }
                 }
                 if (autoAcceptConfirmations.Count > 0)
                 {
                     foreach (var acc in autoAcceptConfirmations.Keys)
                     {
-                        var confirmations = autoAcceptConfirmations[acc].ToArray();
-                        acc.AcceptMultipleConfirmations(confirmations);
+                        try
+                        {
+                            var confirmations = autoAcceptConfirmations[acc].ToArray();
+                            acc.AcceptMultipleConfirmations(confirmations);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
                     }
                 }
             }
@@ -533,7 +558,7 @@ namespace Steam_Desktop_Authenticator
         {
             if (currentAccount != null && steamTime != 0)
             {
-                popupFrm.Account = currentAccount;
+                //popupFrm.Account = currentAccount;
                 txtLoginToken.Text = currentAccount.GenerateSteamGuardCodeForTime(steamTime);
                 groupAccount.Text = "Аккаунт: " + currentAccount.AccountName;
             }

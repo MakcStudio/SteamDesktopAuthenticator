@@ -84,7 +84,7 @@ namespace Steam_Desktop_Authenticator
 
             btnAccept.Text = "Принять";
             btnDeny.Text = "Отклонить";
-            lblAccount.Text = "";
+            lblAccount.Text = Account.AccountName;
             lblStatus.Text = "";
 
             if (confirms.Count == 0)

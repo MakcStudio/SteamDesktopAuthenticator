@@ -248,7 +248,7 @@
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\lib\SteamAuth\SteamAuth.csproj">
+    <ProjectReference Include="..\..\NEW PANEL\SteamAuth\SteamAuth.csproj">
       <Project>{008bd387-3fca-48a4-899b-3bbf6b5946a2}</Project>
       <Name>SteamAuth</Name>
     </ProjectReference>
