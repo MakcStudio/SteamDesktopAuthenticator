@@ -1,4 +1,4 @@
-Download link: https://github.com/MakcStudio/SteamDesktopAuthenticator/releases/download/1.0.2.1/Release.zip
+Download link: https://github.com/MakcStudio/SteamDesktopAuthenticator/releases/download/1.0.2.2/Release.1.0.2.2.zip
 
 Created with support from https://bot.csgo.com
 
