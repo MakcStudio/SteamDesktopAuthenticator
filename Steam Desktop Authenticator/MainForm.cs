@@ -66,11 +66,11 @@ namespace Steam_Desktop_Authenticator
                     }
                 }
 
-                btnManageEncryption.Text = "Настройки шифрования";
+                btnManageEncryption.Text = "Encryption settings";
             }
             else
             {
-                btnManageEncryption.Text = "Зашифровать";
+                btnManageEncryption.Text = "Encrypt";
             }
 
             btnManageEncryption.Enabled = manifest.Entries.Count > 0;
@@ -117,7 +117,7 @@ namespace Steam_Desktop_Authenticator
             if (currentAccount == null) return;
 
             string oText = btnTradeConfirmations.Text;
-            btnTradeConfirmations.Text = "Загрузка...";
+            btnTradeConfirmations.Text = "Loading...";
             //await RefreshAccountSession(currentAccount);
             btnTradeConfirmations.Text = oText;
 
@@ -129,7 +129,7 @@ namespace Steam_Desktop_Authenticator
         {
             if (manifest.Encrypted)
             {
-                InputForm currentPassKeyForm = new InputForm("Введите текущий passkey", true);
+                InputForm currentPassKeyForm = new InputForm("Enter current passkey", true);
                 currentPassKeyForm.ShowDialog();
 
                 if (currentPassKeyForm.Canceled)
@@ -139,7 +139,7 @@ namespace Steam_Desktop_Authenticator
 
                 string curPassKey = currentPassKeyForm.txtBox.Text;
 
-                InputForm changePassKeyForm = new InputForm("Введите новый passkey или оставьте поле пустым, чтобы удалить шифрование.");
+                InputForm changePassKeyForm = new InputForm("Enter a new passkey or leave the field blank to remove the encryption.");
                 changePassKeyForm.ShowDialog();
 
                 if (changePassKeyForm.Canceled && !string.IsNullOrEmpty(changePassKeyForm.txtBox.Text))
@@ -147,7 +147,7 @@ namespace Steam_Desktop_Authenticator
                     return;
                 }
 
-                InputForm changePassKeyForm2 = new InputForm("Подтвердите новый passkey или оставьте пустым, чтобы удалить шифрование.");
+                InputForm changePassKeyForm2 = new InputForm("Confirm new passkey or leave blank to remove encryption.");
                 changePassKeyForm2.ShowDialog();
 
                 if (changePassKeyForm2.Canceled && !string.IsNullOrEmpty(changePassKeyForm.txtBox.Text))
@@ -160,7 +160,7 @@ namespace Steam_Desktop_Authenticator
 
                 if (newPassKey != confirmPassKey)
                 {
-                    MessageBox.Show("Passkeys не совпадают.");
+                    MessageBox.Show("Passkeys do not match.");
                     return;
                 }
 
@@ -172,11 +172,11 @@ namespace Steam_Desktop_Authenticator
                 string action = newPassKey == null ? "remove" : "change";
                 if (!manifest.ChangeEncryptionKey(curPassKey, newPassKey))
                 {
-                    MessageBox.Show("Не в состоянии " + action + " passkey.");
+                    MessageBox.Show("Unable to " + action + " passkey.");
                 }
                 else
                 {
-                    MessageBox.Show("Passkey успешно " + action + "d.");
+                    MessageBox.Show("Passkey succesfully " + action + "d.");
                     this.loadAccountsList();
                 }
             }
@@ -205,15 +205,15 @@ namespace Steam_Desktop_Authenticator
         {
             if (manifest.Encrypted)
             {
-                MessageBox.Show("Невозможно удалить учетные записи из файла манифеста, пока он зашифрован.", "Удалить из манифеста", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Can't remove accounts from manifest file while it's encrypted.", "Remove from manifest", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                DialogResult res = MessageBox.Show("Это приведет к удалению выбранной учетной записи из файла манифеста.\nИспользуется для перемещения файла на другой компьютер.\nЭто не удалит ваш maFile.", "Удалить из манифеста", MessageBoxButtons.OKCancel);
+                DialogResult res = MessageBox.Show("This will remove the selected account from the manifest file.\nUsed to move a file to another computer.\nThis will not delete your maFile.", "Remove from manifest", MessageBoxButtons.OKCancel);
                 if (res == DialogResult.OK)
                 {
                     manifest.RemoveAccount(currentAccount, false);
-                    MessageBox.Show("Аккаунт удален из манифеста.\nТеперь вы можете переместить файл на другой компьютер и импортировать его с помощью меню Файл.", "Удалить из манифеста");
+                    MessageBox.Show("Account removed from manifest.\nNow you can move the file to another computer and import it using the File menu.", "Remove from manifest");
                     loadAccountsList();
                 }
             }
@@ -248,7 +248,7 @@ namespace Steam_Desktop_Authenticator
         {
             if (currentAccount == null) return;
 
-            DialogResult res = MessageBox.Show("Вы хотите полностью удалить Steam Guard?\nYes-полностью снимите защиту Steam Guard.\nNo-переключиться обратно на проверку подлинности электронной почты.", "Снять Защиту Steam", MessageBoxButtons.YesNoCancel);
+            DialogResult res = MessageBox.Show("Do you want to completely remove Steam Guard?\nYes-completely remove the Steam Guard protection.\nNo-switch back to email authentication.", "Remove Steam protection", MessageBoxButtons.YesNoCancel);
             int scheme = 0;
             if (res == DialogResult.Yes)
             {
@@ -266,7 +266,7 @@ namespace Steam_Desktop_Authenticator
             if (scheme != 0)
             {
                 string confCode = currentAccount.GenerateSteamGuardCode();
-                InputForm confirmationDialog = new InputForm(String.Format("Удаление Steam Guard из {0}. Введите этот код подтверждения: {1}", currentAccount.AccountName, confCode));
+                InputForm confirmationDialog = new InputForm(String.Format("Removing Steam Guard from {0}. Enter this verification code: {1}", currentAccount.AccountName, confCode));
                 confirmationDialog.ShowDialog();
 
                 if (confirmationDialog.Canceled)
@@ -277,25 +277,25 @@ namespace Steam_Desktop_Authenticator
                 string enteredCode = confirmationDialog.txtBox.Text.ToUpper();
                 if (enteredCode != confCode)
                 {
-                    MessageBox.Show("Коды подтверждения не совпадают. SteamGuard не снят.");
+                    MessageBox.Show("Confirmation codes do not match. SteamGuard not removed.");
                     return;
                 }
 
                 bool success = currentAccount.DeactivateAuthenticator(scheme);
                 if (success)
                 {
-                    MessageBox.Show(String.Format("Steam Guard {0}. MaFile будет удален после нажатия кнопки ОК. Если вам нужно сделать резервную копию, сейчас самое время.", (scheme == 2 ? "removed completely" : "switched to emails")));
+                    MessageBox.Show(String.Format("Steam Guard {0}. MaFile will be deleted after clicking OK. If you need to back up now is the time.", (scheme == 2 ? "removed completely" : "switched to emails")));
                     this.manifest.RemoveAccount(currentAccount);
                     this.loadAccountsList();
                 }
                 else
                 {
-                    MessageBox.Show("Не удалось деактивировать Steam Guard.");
+                    MessageBox.Show("Failed to deactivate Steam Guard.");
                 }
             }
             else
             {
-                MessageBox.Show("Steam Guard не был удален. Никаких мер принято не было.");
+                MessageBox.Show("Steam Guard has not been removed. No action has been taken.");
             }
         }
 
@@ -312,7 +312,7 @@ namespace Steam_Desktop_Authenticator
                  MessageBox.Show("Ошибка обновления сессии. Используйте функцию \"Перезайти (Login again)\".", "Обновление сеанса", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
              }*/
-            MessageBox.Show("Данная функция отключена. Используйте функцию \"Перезайти (Login again)\".", "Обновление сеанса", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("This feature is disabled. Please use the \"Login again feature\".", "Session update", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         // Tray menu handlers
@@ -388,7 +388,7 @@ namespace Steam_Desktop_Authenticator
 
         private async void timerSteamGuard_Tick(object sender, EventArgs e)
         {
-            lblStatus.Text = "Выравнивание времени сo Steam...";
+            lblStatus.Text = "Time alignment with Steam...";
             steamTime = await TimeAligner.GetSteamTimeAsync();
             lblStatus.Text = "";
 
@@ -419,7 +419,7 @@ namespace Steam_Desktop_Authenticator
                 SteamGuardAccount[] accs =
                     manifest.CheckAllAccounts ? allAccounts : new SteamGuardAccount[] { currentAccount };
 
-                lblStatus.Text = "Проверка подтверждений...";
+                lblStatus.Text = "Checking confirmations...";
 
                 foreach (var acc in accs)
                 {
@@ -446,7 +446,7 @@ namespace Steam_Desktop_Authenticator
                     }
                     catch (SteamGuardAccount.WGTokenInvalidException)
                     {
-                        lblStatus.Text = "Обновление сеанса";
+                        lblStatus.Text = "Session update";
                         //await currentAccount.RefreshSessionAsync(); //Don't save it to the HDD, of course. We'd need their encryption passkey again.
                         lblStatus.Text = "";
                     }
@@ -560,7 +560,7 @@ namespace Steam_Desktop_Authenticator
             {
                 //popupFrm.Account = currentAccount;
                 txtLoginToken.Text = currentAccount.GenerateSteamGuardCodeForTime(steamTime);
-                groupAccount.Text = "Аккаунт: " + currentAccount.AccountName;
+                groupAccount.Text = "Account: " + currentAccount.AccountName;
             }
         }
 

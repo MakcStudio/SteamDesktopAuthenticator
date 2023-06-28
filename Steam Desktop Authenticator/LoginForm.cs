@@ -26,12 +26,12 @@ namespace Steam_Desktop_Authenticator
 
                 if (this.LoginReason == LoginType.Refresh)
                 {
-                    labelLoginExplanation.Text = "Истек срок действия ваших учетных данных Steam. Для торговли и подтверждения рынка, чтобы работать должным образом, пожалуйста, войдите снова.";
+                    labelLoginExplanation.Text = "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Steam. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.";
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Не удалось найти учетную запись. Попробуйте закрыть и снова открыть SDA.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ SDA.", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
         }
@@ -77,7 +77,7 @@ namespace Steam_Desktop_Authenticator
                 switch (response)
                 {
                     case LoginResult.NeedEmail:
-                        InputForm emailForm = new InputForm("Введите код, отправленный на ваш email:");
+                        InputForm emailForm = new InputForm("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ email:");
                         emailForm.ShowDialog();
                         if (emailForm.Canceled)
                         {
@@ -101,27 +101,27 @@ namespace Steam_Desktop_Authenticator
                         break;
 
                     case LoginResult.Need2FA:
-                        MessageBox.Show("К этому аккаунту уже привязан мобильный Аутентификатор.\nУдалите старый Аутентификатор из своего аккаунта Steam перед добавлением нового.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Steam пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.BadRSA:
-                        MessageBox.Show("Error logging in: Steam вернул \"BadRSA\".", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Steam пїЅпїЅпїЅпїЅпїЅпїЅ \"BadRSA\".", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.BadCredentials:
-                        MessageBox.Show("Error logging in: Username or password некорректные.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Username or password пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.TooManyFailedLogins:
-                        MessageBox.Show("Error logging in: Слишком много неудачных попыток, попробуйте позже.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.GeneralFailure:
-                        MessageBox.Show("Error logging in: Steam вернул \"GeneralFailure\".", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Steam пїЅпїЅпїЅпїЅпїЅпїЅ \"GeneralFailure\".", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
                 }
@@ -143,7 +143,7 @@ namespace Steam_Desktop_Authenticator
                             string phoneNumber = "";
                             while (!PhoneNumberOkay(phoneNumber))
                             {
-                                InputForm phoneNumberForm = new InputForm("Введите номер телефона в следующем формате: +{cC} номер телефона. Например, +1 123-456-7890");
+                                InputForm phoneNumberForm = new InputForm("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: +{cC} пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, +1 123-456-7890");
                                 phoneNumberForm.txtBox.Text = "+1 ";
                                 phoneNumberForm.ShowDialog();
                                 if (phoneNumberForm.Canceled)
@@ -158,11 +158,11 @@ namespace Steam_Desktop_Authenticator
 
                             if (linker._get_phone_number())
                             {
-                                MessageBox.Show("Подтвердите письмо на почте и нажмите ОК");
+                                MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ");
 
                                 linker._email_verification();
 
-                                InputForm smsCodeForm = new InputForm("Пожалуйста, введите SMS-код, отправленный на ваш телефон.");
+                                InputForm smsCodeForm = new InputForm("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ SMS-пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
                                 smsCodeForm.ShowDialog();
                                 if (smsCodeForm.Canceled)
                                 {
@@ -172,7 +172,7 @@ namespace Steam_Desktop_Authenticator
 
                                 if (linker._get_sms_code(smsCodeForm.txtBox.Text))
                                 {
-                                    MessageBox.Show("Номер успешно привязан к аккаунту. Продолжаем получать maFile..");
+                                    MessageBox.Show("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ maFile..");
                                 }
                             }
                             break;
@@ -182,7 +182,7 @@ namespace Steam_Desktop_Authenticator
                         break;
 
                     case AuthenticatorLinker.LinkResult.GeneralFailure:
-                        MessageBox.Show("Ошибка добавления телефона. Steam вернул \"GeneralFailure\".");
+                        MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. Steam пїЅпїЅпїЅпїЅпїЅпїЅ \"GeneralFailure\".");
                         this.Close();
                         return;
                 }
@@ -193,14 +193,14 @@ namespace Steam_Desktop_Authenticator
 
             /*if (manifest.Entries.Count == 0)
             {
-                passKey = manifest.PromptSetupPassKey("Введите (PassKey) ключ шифрования. Оставьте пустым или нажмите Отмена, чтобы не шифровать (очень небезопасно).");
+                passKey = manifest.PromptSetupPassKey("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (PassKey) пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ).");
             }
             else if (manifest.Entries.Count > 0 && manifest.Encrypted)
             {
                 bool passKeyValid = false;
                 while (!passKeyValid)
                 {
-                    InputForm passKeyForm = new InputForm("Введите текущий PassKey");
+                    InputForm passKeyForm = new InputForm("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ PassKey");
                     passKeyForm.ShowDialog();
                     if (!passKeyForm.Canceled)
                     {
@@ -208,7 +208,7 @@ namespace Steam_Desktop_Authenticator
                         passKeyValid = manifest.VerifyPasskey(passKey);
                         if (!passKeyValid)
                         {
-                            MessageBox.Show("Этот PassKey недействителен. Введите PassKey, который вы использовали для других учетных записей.");
+                            MessageBox.Show("пїЅпїЅпїЅпїЅ PassKey пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ PassKey, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
                         }
                     }
                     else
@@ -224,7 +224,7 @@ namespace Steam_Desktop_Authenticator
                 bool passKeyValid = false;
                 while (!passKeyValid)
                 {
-                    InputForm passKeyForm = new InputForm("Введите текущий PassKey");
+                    InputForm passKeyForm = new InputForm("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ PassKey");
                     passKeyForm.ShowDialog();
                     if (!passKeyForm.Canceled)
                     {
@@ -232,7 +232,7 @@ namespace Steam_Desktop_Authenticator
                         passKeyValid = manifest.VerifyPasskey(passKey);
                         if (!passKeyValid)
                         {
-                            MessageBox.Show("Этот PassKey недействителен. Введите PassKey, который вы использовали для других учетных записей.");
+                            MessageBox.Show("пїЅпїЅпїЅпїЅ PassKey пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ PassKey, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
                         }
                     }
                     else
@@ -247,17 +247,17 @@ namespace Steam_Desktop_Authenticator
             if (!manifest.SaveAccount(linker.LinkedAccount, passKey != null, passKey))
             {
                 manifest.RemoveAccount(linker.LinkedAccount);
-                MessageBox.Show("Не удается сохранить файл Mobile authenticator. Мобильный Аутентификатор не связан.");
+                MessageBox.Show("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ Mobile authenticator. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.");
                 this.Close();
                 return;
             }
 
-            MessageBox.Show("Мобильный Аутентификатор еще не подключен. Перед завершением проверки подлинности запишите код отзыва: " + linker.LinkedAccount.RevocationCode);
+            MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: " + linker.LinkedAccount.RevocationCode);
 
             AuthenticatorLinker.FinalizeResult finalizeResponse = AuthenticatorLinker.FinalizeResult.GeneralFailure;
             while (finalizeResponse != AuthenticatorLinker.FinalizeResult.Success)
             {
-                InputForm smsCodeForm = new InputForm("Пожалуйста, введите SMS-код, отправленный на ваш телефон.");
+                InputForm smsCodeForm = new InputForm("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ SMS-пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
                 smsCodeForm.ShowDialog();
                 if (smsCodeForm.Canceled)
                 {
@@ -266,11 +266,11 @@ namespace Steam_Desktop_Authenticator
                     return;
                 }
 
-                InputForm confirmRevocationCode = new InputForm("Пожалуйста, введите код отзыва, чтобы убедиться, что вы его сохранили.");
+                InputForm confirmRevocationCode = new InputForm("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
                 confirmRevocationCode.ShowDialog();
                 if (confirmRevocationCode.txtBox.Text.ToUpper() != linker.LinkedAccount.RevocationCode)
                 {
-                    MessageBox.Show("Неверный код отзыва; средство проверки подлинности не связано.");
+                    MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ; пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
                     manifest.RemoveAccount(linker.LinkedAccount);
                     this.Close();
                     return;
@@ -285,13 +285,13 @@ namespace Steam_Desktop_Authenticator
                         continue;
 
                     case AuthenticatorLinker.FinalizeResult.UnableToGenerateCorrectCodes:
-                        MessageBox.Show("Не удалось создать правильные коды для завершения проверки подлинности. Аутентификатор не должен был быть связан. В случае, если это было, пожалуйста, запишите свой код отзыва, так как это последний шанс увидеть его: " + linker.LinkedAccount.RevocationCode);
+                        MessageBox.Show("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ: " + linker.LinkedAccount.RevocationCode);
                         manifest.RemoveAccount(linker.LinkedAccount);
                         this.Close();
                         return;
 
                     case AuthenticatorLinker.FinalizeResult.GeneralFailure:
-                        MessageBox.Show("Невозможно завершить проверку подлинности. Аутентификатор не должен был быть связан. В случае, если это было, пожалуйста, запишите свой код отзыва, так как это последний шанс увидеть его: " + linker.LinkedAccount.RevocationCode);
+                        MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ: " + linker.LinkedAccount.RevocationCode);
                         manifest.RemoveAccount(linker.LinkedAccount);
                         this.Close();
                         return;
@@ -300,7 +300,7 @@ namespace Steam_Desktop_Authenticator
 
             //Linked, finally. Re-save with FullyEnrolled property.
             manifest.SaveAccount(linker.LinkedAccount, passKey != null, passKey);
-            MessageBox.Show("Мобильный Аутентификатор успешно подключен. Пожалуйста, запишите код отзыва : " + linker.LinkedAccount.RevocationCode);
+            MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ : " + linker.LinkedAccount.RevocationCode);
             this.Close();
         }
 
@@ -342,22 +342,22 @@ namespace Steam_Desktop_Authenticator
                         break;
 
                     case LoginResult.BadRSA:
-                        MessageBox.Show("Error logging in: Steam вернул \"BadRSA\".", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Steam пїЅпїЅпїЅпїЅпїЅпїЅ \"BadRSA\".", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.BadCredentials:
-                        MessageBox.Show("Error logging in: Username or password некорректные.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Username or password пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.TooManyFailedLogins:
-                        MessageBox.Show("Error logging in: Слишком много неудачных попыток, попробуйте позже.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.GeneralFailure:
-                        MessageBox.Show("Error logging in: Steam вернул \"GeneralFailure\".", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Steam пїЅпїЅпїЅпїЅпїЅпїЅ \"GeneralFailure\".", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
                 }
@@ -388,7 +388,7 @@ namespace Steam_Desktop_Authenticator
                 switch (response)
                 {
                     case LoginResult.NeedEmail:
-                        InputForm emailForm = new InputForm("Введите код, отправленный на ваш email:");
+                        InputForm emailForm = new InputForm("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ email:");
                         emailForm.ShowDialog();
                         if (emailForm.Canceled)
                         {
@@ -416,22 +416,22 @@ namespace Steam_Desktop_Authenticator
                         break;
 
                     case LoginResult.BadRSA:
-                        MessageBox.Show("Error logging in: Steam вернул \"BadRSA\".", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Steam пїЅпїЅпїЅпїЅпїЅпїЅ \"BadRSA\".", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.BadCredentials:
-                        MessageBox.Show("Error logging in: Username or password некорректные.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Username or password пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.TooManyFailedLogins:
-                        MessageBox.Show("Error logging in: Слишком много неудачных попыток, попробуйте позже.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.GeneralFailure:
-                        MessageBox.Show("Error logging in: Steam вернул \"GeneralFailure\".", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Steam пїЅпїЅпїЅпїЅпїЅпїЅ \"GeneralFailure\".", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
                 }
@@ -447,14 +447,14 @@ namespace Steam_Desktop_Authenticator
             string passKey = null;
             if (man.Entries.Count == 0)
             {
-                passKey = man.PromptSetupPassKey("Введите (Passkey) ключ шифрования. Оставьте пустым или нажмите Отмена, чтобы не шифровать (очень небезопасно).");
+                passKey = man.PromptSetupPassKey("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (Passkey) пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ).");
             }
             else if (man.Entries.Count > 0 && man.Encrypted)
             {
                 bool passKeyValid = false;
                 while (!passKeyValid)
                 {
-                    InputForm passKeyForm = new InputForm("Пожалуйста, введите Ваш текущий ключ шифрования.");
+                    InputForm passKeyForm = new InputForm("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
                     passKeyForm.ShowDialog();
                     if (!passKeyForm.Canceled)
                     {
@@ -462,7 +462,7 @@ namespace Steam_Desktop_Authenticator
                         passKeyValid = man.VerifyPasskey(passKey);
                         if (!passKeyValid)
                         {
-                            MessageBox.Show("Этот Passkey недействителен. Введите Passkey, который вы использовали для других учетных записей.");
+                            MessageBox.Show("пїЅпїЅпїЅпїЅ Passkey пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Passkey, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
                         }
                     }
                     else
@@ -476,11 +476,11 @@ namespace Steam_Desktop_Authenticator
             man.SaveAccount(androidAccount, passKey != null, passKey);
             if (IsRefreshing)
             {
-                MessageBox.Show("Ваш сеанс входа был обновлен.");
+                MessageBox.Show("пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
             }
             else
             {
-                MessageBox.Show("Мобильный Аутентификатор успешно подключен. Пожалуйста, запишите код отзыва : " + androidAccount.RevocationCode);
+                MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ : " + androidAccount.RevocationCode);
             }
             this.Close();
         }

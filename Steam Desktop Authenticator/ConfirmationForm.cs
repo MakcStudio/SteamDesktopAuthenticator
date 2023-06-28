@@ -24,7 +24,7 @@ namespace Steam_Desktop_Authenticator
         {
             InitializeComponent();
             this.steamAccount = steamAccount;
-            this.Text = String.Format("Список предложений - {0}", steamAccount.AccountName);
+            this.Text = String.Format("Offer list - {0}", steamAccount.AccountName);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -93,19 +93,19 @@ namespace Steam_Desktop_Authenticator
                     }
                     else
                     {
-                        label1.Text = "Список трейдов пуст";
+                        label1.Text = "Trade list is empty";
                         label1.Visible = true;
                     }
                 }
                 else
                 {
-                    label1.Text = "Не удалось получить список, возможно из-за слишком частых запросов.\r\n\r\nПопробуйте снова немного позже";
+                    label1.Text = "Failed to get list, possibly due to too many requests.\r\n\r\nPlease try again later";
                     label1.Visible = true;
                 }
             }
             catch (Exception ex)
             {
-                label1.Text = "Ошибка получения трейдов.\r\n\r\nПопробуйте обновить, если это не помогает используйте 'Перезайти (Login again)'";
+                label1.Text = "Error getting trades.\r\n\r\nTry updating, if that doesn't work use 'Login again'";
                 label1.Visible = true;
                 //MessageBox.Show("Ошибка получения трейдов. Попробуйте обновить, если это не помогает используйте 'Перезайти (Login again)'");
             }
@@ -133,7 +133,7 @@ namespace Steam_Desktop_Authenticator
                     }
                     else
                     {
-                        MessageBox.Show("Ошибка принятия трейда. Обновите и попробуйте снова");
+                        MessageBox.Show("Trade acceptance error. Refresh and try again");
                     }
                 }
                 else if (e.ColumnIndex == 6)
@@ -145,11 +145,11 @@ namespace Steam_Desktop_Authenticator
                     }
                     else
                     {
-                        MessageBox.Show("Ошибка отклонения трейда. Обновите и попробуйте снова");
+                        MessageBox.Show("Trade rejection error. Refresh and try again");
                     }
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Ошибка обработки нажатия"); }
+            catch (Exception ex) { MessageBox.Show("Click handling error"); }
         }
     }
 }

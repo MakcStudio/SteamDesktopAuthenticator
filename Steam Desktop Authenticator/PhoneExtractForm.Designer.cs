@@ -80,7 +80,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 21);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Лог:";
+            this.label3.Text = "Log:";
             // 
             // linkLabel1
             // 
@@ -88,10 +88,10 @@
             this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.Location = new System.Drawing.Point(12, 19);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(228, 17);
+            this.linkLabel1.Size = new System.Drawing.Size(154, 17);
             this.linkLabel1.TabIndex = 6;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Нажмите чтобы открыть инструкцию";
+            this.linkLabel1.Text = "Click to open instructions";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // PhoneExtractForm
@@ -111,7 +111,7 @@
             this.Name = "PhoneExtractForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Импорт из Андроид устройства";
+            this.Text = "Import from Android device";
             this.Load += new System.EventHandler(this.PhoneExtractForm_Load);
             this.Shown += new System.EventHandler(this.PhoneExtractForm_Shown);
             this.ResumeLayout(false);
