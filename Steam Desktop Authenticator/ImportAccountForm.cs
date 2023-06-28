@@ -38,7 +38,7 @@ namespace Steam_Desktop_Authenticator
                 bool AppManifestData_encrypted = AppManifestData.Encrypted;
                 if (AppManifestData_encrypted == true)
                 {
-                    MessageBox.Show("пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.maFile пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
+                    MessageBox.Show("Вы не можете импортировать.maFile существующей учетной записи, потому что она зашифрована.\nРасшифруйте и повторите попытку.");
                     this.Close();
                 }
                 else if (AppManifestData_encrypted == false)
@@ -47,13 +47,13 @@ namespace Steam_Desktop_Authenticator
                 }
                 else
                 {
-                    MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 'encrypted' пїЅпїЅпїЅпїЅпїЅпїЅ manifest.json");
+                    MessageBox.Show("Недопустимое значение переменной 'encrypted' внутри manifest.json");
                     this.Close();
                 }
             }
             else
             {
-                MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
+                MessageBox.Show("Произошла ошибка, перезапустите программу!");
             }
             #endregion
 
@@ -101,11 +101,11 @@ namespace Steam_Desktop_Authenticator
                             if (maFile.Session.SteamID != 0)
                             {
                                 mManifest.SaveAccount(maFile, false);
-                                MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
+                                MessageBox.Show("Учетная запись импортирована!");
                             }
                             else
                             {
-                                throw new Exception("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ SteamID");
+                                throw new Exception("Невалидный SteamID");
                             }
                             #endregion
                         }
@@ -165,7 +165,7 @@ namespace Steam_Desktop_Authenticator
                                 catch (Exception)
                                 {
                                     ReadManifestEx = "1";
-                                    MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ manifest.json!\nпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
+                                    MessageBox.Show("Невалидный контент manifest.json!\nОшибка импорта.");
                                 }
 
 
@@ -228,7 +228,7 @@ namespace Steam_Desktop_Authenticator
                             }
                             else
                             {
-                                MessageBox.Show("manifest.json пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!\nпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
+                                MessageBox.Show("manifest.json отсутствует!\nОшибка импорта.");
                             }
                             #endregion //Import Encripted maFile END
                         }
@@ -236,7 +236,7 @@ namespace Steam_Desktop_Authenticator
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ SteamAuth maFile.\nпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
+                        MessageBox.Show("Этот файл не является допустимым SteamAuth maFile.\nОшибка импорта.");
                     }
                 }
             }
