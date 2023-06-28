@@ -27,7 +27,7 @@ namespace Steam_Desktop_Authenticator
             this.labelText.Name = "labelText";
             this.labelText.Size = new System.Drawing.Size(317, 25);
             this.labelText.TabIndex = 0;
-            this.labelText.Text = "Введите (passkey) пароль шифрования если ваш .maFile зашифрован:";
+            this.labelText.Text = "Enter your encryption passkey if your .maFile is encrypted";
             // 
             // txtBox
             // 
@@ -43,7 +43,7 @@ namespace Steam_Desktop_Authenticator
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(187, 28);
             this.btnImport.TabIndex = 3;
-            this.btnImport.Text = "Выбрать .maFile для импорта";
+            this.btnImport.Text = "Select .maFile to import";
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
@@ -54,7 +54,7 @@ namespace Steam_Desktop_Authenticator
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 28);
             this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "Отмена";
+            this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -67,8 +67,7 @@ namespace Steam_Desktop_Authenticator
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(307, 40);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Если вы импортируете зашифрованное .maFile, файл manifest должен быть рядом с ним" +
-    ".";
+            this.label1.Text = "If you import an encrypted .maFile, the manifest must be next to it";
             // 
             // ImportAccountForm
             // 
@@ -89,7 +88,7 @@ namespace Steam_Desktop_Authenticator
             this.Name = "ImportAccountForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Импорт аккаунта";
+            this.Text = "Import account";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Import_maFile_Form_FormClosing);
             this.Load += new System.EventHandler(this.ImportAccountForm_Load);
             this.ResumeLayout(false);

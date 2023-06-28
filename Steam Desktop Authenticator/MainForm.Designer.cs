@@ -79,7 +79,7 @@
             this.btnSteamLogin.Name = "btnSteamLogin";
             this.btnSteamLogin.Size = new System.Drawing.Size(155, 31);
             this.btnSteamLogin.TabIndex = 1;
-            this.btnSteamLogin.Text = "Добавить аккаунт";
+            this.btnSteamLogin.Text = "Add account";
             this.btnSteamLogin.UseVisualStyleBackColor = true;
             this.btnSteamLogin.Click += new System.EventHandler(this.btnSteamLogin_Click);
             // 
@@ -95,7 +95,7 @@
             this.groupBox1.Size = new System.Drawing.Size(327, 85);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Guard код";
+            this.groupBox1.Text = "Guard code";
             // 
             // btnCopy
             // 
@@ -159,7 +159,7 @@
             this.btnTradeConfirmations.Name = "btnTradeConfirmations";
             this.btnTradeConfirmations.Size = new System.Drawing.Size(315, 31);
             this.btnTradeConfirmations.TabIndex = 4;
-            this.btnTradeConfirmations.Text = "Посмотреть предложения";
+            this.btnTradeConfirmations.Text = "View confirmations";
             this.btnTradeConfirmations.UseVisualStyleBackColor = true;
             this.btnTradeConfirmations.Click += new System.EventHandler(this.btnTradeConfirmations_Click);
             // 
@@ -170,7 +170,7 @@
             this.btnManageEncryption.Name = "btnManageEncryption";
             this.btnManageEncryption.Size = new System.Drawing.Size(166, 31);
             this.btnManageEncryption.TabIndex = 6;
-            this.btnManageEncryption.Text = "Настройки шифрования";
+            this.btnManageEncryption.Text = "Encryption settings";
             this.btnManageEncryption.UseVisualStyleBackColor = true;
             this.btnManageEncryption.Click += new System.EventHandler(this.btnManageEncryption_Click);
             // 
@@ -184,7 +184,7 @@
             this.groupAccount.Size = new System.Drawing.Size(327, 56);
             this.groupAccount.TabIndex = 7;
             this.groupAccount.TabStop = false;
-            this.groupAccount.Text = "Аккаунт";
+            this.groupAccount.Text = "Account";
             // 
             // menuStrip
             // 
@@ -207,41 +207,41 @@
             this.menuSettings,
             this.menuQuit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.fileToolStripMenuItem.Text = "Файл";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
             // 
             // importAccountToolStripMenuItem
             // 
             this.importAccountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuImportMaFile});
             this.importAccountToolStripMenuItem.Name = "importAccountToolStripMenuItem";
-            this.importAccountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.importAccountToolStripMenuItem.Text = "Импорт аккаунта";
+            this.importAccountToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.importAccountToolStripMenuItem.Text = "Account import";
             // 
             // menuImportMaFile
             // 
             this.menuImportMaFile.Name = "menuImportMaFile";
-            this.menuImportMaFile.Size = new System.Drawing.Size(180, 22);
+            this.menuImportMaFile.Size = new System.Drawing.Size(140, 22);
             this.menuImportMaFile.Text = "From maFile";
             this.menuImportMaFile.Click += new System.EventHandler(this.menuImportMaFile_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(155, 6);
             // 
             // menuSettings
             // 
             this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(180, 22);
-            this.menuSettings.Text = "Настройки";
+            this.menuSettings.Size = new System.Drawing.Size(158, 22);
+            this.menuSettings.Text = "Settings";
             this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
             // 
             // menuQuit
             // 
             this.menuQuit.Name = "menuQuit";
-            this.menuQuit.Size = new System.Drawing.Size(180, 22);
-            this.menuQuit.Text = "Выход";
+            this.menuQuit.Size = new System.Drawing.Size(158, 22);
+            this.menuQuit.Text = "Exit";
             this.menuQuit.Click += new System.EventHandler(this.menuQuit_Click);
             // 
             // accountToolStripMenuItem
@@ -253,40 +253,40 @@
             this.menuRemoveAccountFromManifest,
             this.menuDeactivateAuthenticator});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(130, 20);
-            this.accountToolStripMenuItem.Text = "Выбранный аккаунт";
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(109, 20);
+            this.accountToolStripMenuItem.Text = "Selected account";
             // 
             // menuLoginAgain
             // 
             this.menuLoginAgain.Name = "menuLoginAgain";
-            this.menuLoginAgain.Size = new System.Drawing.Size(254, 22);
-            this.menuLoginAgain.Text = "Перезайти (Login again)";
+            this.menuLoginAgain.Size = new System.Drawing.Size(203, 22);
+            this.menuLoginAgain.Text = "Login again";
             this.menuLoginAgain.Click += new System.EventHandler(this.menuLoginAgain_Click);
             // 
             // menuRefreshSession
             // 
             this.menuRefreshSession.Name = "menuRefreshSession";
-            this.menuRefreshSession.Size = new System.Drawing.Size(254, 22);
-            this.menuRefreshSession.Text = "Обновить сессию";
+            this.menuRefreshSession.Size = new System.Drawing.Size(203, 22);
+            this.menuRefreshSession.Text = "Refresh session";
             this.menuRefreshSession.Click += new System.EventHandler(this.menuRefreshSession_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(251, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(200, 6);
             // 
             // menuRemoveAccountFromManifest
             // 
             this.menuRemoveAccountFromManifest.Name = "menuRemoveAccountFromManifest";
-            this.menuRemoveAccountFromManifest.Size = new System.Drawing.Size(254, 22);
-            this.menuRemoveAccountFromManifest.Text = "Удалить из manifest";
+            this.menuRemoveAccountFromManifest.Size = new System.Drawing.Size(203, 22);
+            this.menuRemoveAccountFromManifest.Text = "Delete from manifest";
             this.menuRemoveAccountFromManifest.Click += new System.EventHandler(this.menuRemoveAccountFromManifest_Click);
             // 
             // menuDeactivateAuthenticator
             // 
             this.menuDeactivateAuthenticator.Name = "menuDeactivateAuthenticator";
-            this.menuDeactivateAuthenticator.Size = new System.Drawing.Size(254, 22);
-            this.menuDeactivateAuthenticator.Text = "Деактивировать аутентификатор";
+            this.menuDeactivateAuthenticator.Size = new System.Drawing.Size(203, 22);
+            this.menuDeactivateAuthenticator.Text = "Deactivate authenticator";
             this.menuDeactivateAuthenticator.Click += new System.EventHandler(this.menuDeactivateAuthenticator_Click);
             // 
             // trayIcon
@@ -390,9 +390,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 375);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Фильтр:";
+            this.label1.Text = "Filter:";
             // 
             // MainForm
             // 

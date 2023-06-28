@@ -43,7 +43,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(366, 73);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Приветствуем в \r\nSteam Desktop Authenticator";
+            this.label1.Text = "Welcome to \r\nSteam Desktop Authenticator";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnImportConfig
@@ -53,8 +53,8 @@
             this.btnImportConfig.Name = "btnImportConfig";
             this.btnImportConfig.Size = new System.Drawing.Size(366, 71);
             this.btnImportConfig.TabIndex = 1;
-            this.btnImportConfig.Text = "Я уже настроил Steam Desktop Authenticator в другом месте на этом компьютере и хо" +
-    "чу импортировать его учетные записи.";
+            this.btnImportConfig.Text = "I have already set up the Steam Desktop Authenticator elsewhere on this computer " +
+    "and want to import its accounts.";
             this.btnImportConfig.UseVisualStyleBackColor = true;
             this.btnImportConfig.Click += new System.EventHandler(this.btnImportConfig_Click);
             // 
@@ -65,7 +65,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(366, 37);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Выберите элемент для начала работы:";
+            this.label2.Text = "Select an item to get started:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAndroidImport
@@ -75,8 +75,8 @@
             this.btnAndroidImport.Name = "btnAndroidImport";
             this.btnAndroidImport.Size = new System.Drawing.Size(366, 51);
             this.btnAndroidImport.TabIndex = 3;
-            this.btnAndroidImport.Text = "У меня есть устройство Android и хочу \nимпортируйте мои аккаунты Steam из приложе" +
-    "ния Steam.";
+            this.btnAndroidImport.Text = "I have an Android device and want to\nimport my steam accounts from the steam app." +
+    "";
             this.btnAndroidImport.UseVisualStyleBackColor = true;
             this.btnAndroidImport.Click += new System.EventHandler(this.btnAndroidImport_Click);
             // 
@@ -87,7 +87,7 @@
             this.btnJustStart.Name = "btnJustStart";
             this.btnJustStart.Size = new System.Drawing.Size(366, 51);
             this.btnJustStart.TabIndex = 4;
-            this.btnJustStart.Text = "Это мой первый раз и \nЯ просто хочу войти в свой аккаунт Steam.";
+            this.btnJustStart.Text = "This is my first time and\nI just want to sign into my Steam account.";
             this.btnJustStart.UseVisualStyleBackColor = true;
             this.btnJustStart.Click += new System.EventHandler(this.btnJustStart_Click);
             // 
