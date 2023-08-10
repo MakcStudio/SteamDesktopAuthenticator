@@ -26,12 +26,12 @@ namespace Steam_Desktop_Authenticator
 
                 if (this.LoginReason == LoginType.Refresh)
                 {
-                    labelLoginExplanation.Text = "����� ���� �������� ����� ������� ������ Steam. ��� �������� � ������������� �����, ����� �������� ������� �������, ����������, ������� �����.";
+                    labelLoginExplanation.Text = "Your Steam credentials have expired. For trade and market confirmations to work properly, please login again.";
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("�� ������� ����� ������� ������. ���������� ������� � ����� ������� SDA.", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to find your account. Try closing and re-opening SDA.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
         }
@@ -77,7 +77,7 @@ namespace Steam_Desktop_Authenticator
                 switch (response)
                 {
                     case LoginResult.NeedEmail:
-                        InputForm emailForm = new InputForm("������� ���, ������������ �� ��� email:");
+                        InputForm emailForm = new InputForm("Please enter the email address associated with your account:");
                         emailForm.ShowDialog();
                         if (emailForm.Canceled)
                         {
@@ -101,27 +101,27 @@ namespace Steam_Desktop_Authenticator
                         break;
 
                     case LoginResult.Need2FA:
-                        MessageBox.Show("� ����� �������� ��� �������� ��������� ��������������.\n������� ������ �������������� �� ������ �������� Steam ����� ����������� ������.", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: 2 factor authentication needs to be enabled for your Steam account", "Missing 2FA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.BadRSA:
-                        MessageBox.Show("Error logging in: Steam ������ \"BadRSA\".", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Steam error \"BadRSA\".", "Steam error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.BadCredentials:
-                        MessageBox.Show("Error logging in: Username or password ������������.", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Username and password do not match.", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.TooManyFailedLogins:
-                        MessageBox.Show("Error logging in: ������� ����� ��������� �������, ���������� �����.", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Too many failed login attempts have been made.", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.GeneralFailure:
-                        MessageBox.Show("Error logging in: Steam ������ \"GeneralFailure\".", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Steam error \"GeneralFailure\".", "Steam error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
                 }
@@ -143,7 +143,7 @@ namespace Steam_Desktop_Authenticator
                             string phoneNumber = "";
                             while (!PhoneNumberOkay(phoneNumber))
                             {
-                                InputForm phoneNumberForm = new InputForm("������� ����� �������� � ��������� �������: +{cC} ����� ��������. ��������, +1 123-456-7890");
+                                InputForm phoneNumberForm = new InputForm("Phone number must start with + and country code (i.e. +31612345678)");
                                 phoneNumberForm.txtBox.Text = "+1 ";
                                 phoneNumberForm.ShowDialog();
                                 if (phoneNumberForm.Canceled)
@@ -162,7 +162,7 @@ namespace Steam_Desktop_Authenticator
 
                                 linker._email_verification();
 
-                                InputForm smsCodeForm = new InputForm("����������, ������� SMS-���, ������������ �� ��� �������.");
+                                InputForm smsCodeForm = new InputForm("Please input the SMS code sent to your phone.");
                                 smsCodeForm.ShowDialog();
                                 if (smsCodeForm.Canceled)
                                 {
@@ -182,7 +182,7 @@ namespace Steam_Desktop_Authenticator
                         break;
 
                     case AuthenticatorLinker.LinkResult.GeneralFailure:
-                        MessageBox.Show("������ ���������� ��������. Steam ������ \"GeneralFailure\".");
+                        MessageBox.Show("Error adding your authenticator. Steam error \"GeneralFailure\".");
                         this.Close();
                         return;
                 }
@@ -224,7 +224,7 @@ namespace Steam_Desktop_Authenticator
                 bool passKeyValid = false;
                 while (!passKeyValid)
                 {
-                    InputForm passKeyForm = new InputForm("������� ������� PassKey");
+                    InputForm passKeyForm = new InputForm("Please enter your current encryption PassKey");
                     passKeyForm.ShowDialog();
                     if (!passKeyForm.Canceled)
                     {
@@ -232,7 +232,7 @@ namespace Steam_Desktop_Authenticator
                         passKeyValid = manifest.VerifyPasskey(passKey);
                         if (!passKeyValid)
                         {
-                            MessageBox.Show("���� PassKey ��������������. ������� PassKey, ������� �� ������������ ��� ������ ������� �������.");
+                            MessageBox.Show("That passkey is invalid. Please enter the same passkey you used for your other accounts.");
                         }
                     }
                     else
@@ -247,17 +247,17 @@ namespace Steam_Desktop_Authenticator
             if (!manifest.SaveAccount(linker.LinkedAccount, passKey != null, passKey))
             {
                 manifest.RemoveAccount(linker.LinkedAccount);
-                MessageBox.Show("�� ������� ��������� ���� Mobile authenticator. ��������� �������������� �� ������.");
+                MessageBox.Show("Unable to save mobile authenticator file. The mobile authenticator has not been linked.");
                 this.Close();
                 return;
             }
 
-            MessageBox.Show("��������� �������������� ��� �� ���������. ����� ����������� �������� ����������� �������� ��� ������: " + linker.LinkedAccount.RevocationCode);
+            MessageBox.Show("The Mobile Authenticator has not yet been linked. Before finalizing the authenticator, please write down your revocation code: " + linker.LinkedAccount.RevocationCode);
 
             AuthenticatorLinker.FinalizeResult finalizeResponse = AuthenticatorLinker.FinalizeResult.GeneralFailure;
             while (finalizeResponse != AuthenticatorLinker.FinalizeResult.Success)
             {
-                InputForm smsCodeForm = new InputForm("����������, ������� SMS-���, ������������ �� ��� �������.");
+                InputForm smsCodeForm = new InputForm("Please input the SMS code sent to your phone.");
                 smsCodeForm.ShowDialog();
                 if (smsCodeForm.Canceled)
                 {
@@ -266,11 +266,11 @@ namespace Steam_Desktop_Authenticator
                     return;
                 }
 
-                InputForm confirmRevocationCode = new InputForm("����������, ������� ��� ������, ����� ���������, ��� �� ��� ���������.");
+                InputForm confirmRevocationCode = new InputForm("Please enter your revocation code to ensure you've saved it.");
                 confirmRevocationCode.ShowDialog();
                 if (confirmRevocationCode.txtBox.Text.ToUpper() != linker.LinkedAccount.RevocationCode)
                 {
-                    MessageBox.Show("�������� ��� ������; �������� �������� ����������� �� �������.");
+                    MessageBox.Show("Revocation code incorrect; the authenticator has not been linked.");
                     manifest.RemoveAccount(linker.LinkedAccount);
                     this.Close();
                     return;
@@ -285,13 +285,13 @@ namespace Steam_Desktop_Authenticator
                         continue;
 
                     case AuthenticatorLinker.FinalizeResult.UnableToGenerateCorrectCodes:
-                        MessageBox.Show("�� ������� ������� ���������� ���� ��� ���������� �������� �����������. �������������� �� ������ ��� ���� ������. � ������, ���� ��� ����, ����������, �������� ���� ��� ������, ��� ��� ��� ��������� ���� ������� ���: " + linker.LinkedAccount.RevocationCode);
+                        MessageBox.Show("Unable to generate the proper codes to finalize this authenticator. The authenticator should not have been linked. In the off-chance it was, please write down your revocation code, as this is the last chance to see it: " + linker.LinkedAccount.RevocationCode);
                         manifest.RemoveAccount(linker.LinkedAccount);
                         this.Close();
                         return;
 
                     case AuthenticatorLinker.FinalizeResult.GeneralFailure:
-                        MessageBox.Show("���������� ��������� �������� �����������. �������������� �� ������ ��� ���� ������. � ������, ���� ��� ����, ����������, �������� ���� ��� ������, ��� ��� ��� ��������� ���� ������� ���: " + linker.LinkedAccount.RevocationCode);
+                        MessageBox.Show("Unable to finalize this authenticator. The authenticator should not have been linked. In the off-chance it was, please write down your revocation code, as this is the last chance to see it: " + linker.LinkedAccount.RevocationCode);
                         manifest.RemoveAccount(linker.LinkedAccount);
                         this.Close();
                         return;
@@ -300,7 +300,7 @@ namespace Steam_Desktop_Authenticator
 
             //Linked, finally. Re-save with FullyEnrolled property.
             manifest.SaveAccount(linker.LinkedAccount, passKey != null, passKey);
-            MessageBox.Show("��������� �������������� ������� ���������. ����������, �������� ��� ������ : " + linker.LinkedAccount.RevocationCode);
+            MessageBox.Show("Mobile authenticator successfully linked. Please write down your revocation code: " + linker.LinkedAccount.RevocationCode);
             this.Close();
         }
 
@@ -342,22 +342,22 @@ namespace Steam_Desktop_Authenticator
                         break;
 
                     case LoginResult.BadRSA:
-                        MessageBox.Show("Error logging in: Steam ������ \"BadRSA\".", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Steam error \"BadRSA\".", "Steam error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.BadCredentials:
-                        MessageBox.Show("Error logging in: Username or password ������������.", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Username and password do not match.", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.TooManyFailedLogins:
-                        MessageBox.Show("Error logging in: ������� ����� ��������� �������, ���������� �����.", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Too many failed login attempts have been made.", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.GeneralFailure:
-                        MessageBox.Show("Error logging in: Steam ������ \"GeneralFailure\".", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Steam error \"GeneralFailure\".", "Steam error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
                 }
@@ -388,7 +388,7 @@ namespace Steam_Desktop_Authenticator
                 switch (response)
                 {
                     case LoginResult.NeedEmail:
-                        InputForm emailForm = new InputForm("������� ���, ������������ �� ��� email:");
+                        InputForm emailForm = new InputForm("Please enter the email address associated with your account:");
                         emailForm.ShowDialog();
                         if (emailForm.Canceled)
                         {
@@ -416,22 +416,22 @@ namespace Steam_Desktop_Authenticator
                         break;
 
                     case LoginResult.BadRSA:
-                        MessageBox.Show("Error logging in: Steam ������ \"BadRSA\".", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Steam error \"BadRSA\".", "Steam error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.BadCredentials:
-                        MessageBox.Show("Error logging in: Username or password ������������.", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Username and password do not match.", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.TooManyFailedLogins:
-                        MessageBox.Show("Error logging in: ������� ����� ��������� �������, ���������� �����.", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Too many failed login attempts have been made.", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case LoginResult.GeneralFailure:
-                        MessageBox.Show("Error logging in: Steam ������ \"GeneralFailure\".", "������ �����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error logging in: Steam error \"GeneralFailure\".", "Steam error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         return;
                 }
@@ -447,14 +447,14 @@ namespace Steam_Desktop_Authenticator
             string passKey = null;
             if (man.Entries.Count == 0)
             {
-                passKey = man.PromptSetupPassKey("������� (Passkey) ���� ����������. �������� ������ ��� ������� ������, ����� �� ��������� (����� �����������).");
+                passKey = man.PromptSetupPassKey("Please enter an encryption passkey. Leave blank or hit cancel to not encrypt (VERY INSECURE).");
             }
             else if (man.Entries.Count > 0 && man.Encrypted)
             {
                 bool passKeyValid = false;
                 while (!passKeyValid)
                 {
-                    InputForm passKeyForm = new InputForm("����������, ������� ��� ������� ���� ����������.");
+                    InputForm passKeyForm = new InputForm("Please enter your current encryption passkey.");
                     passKeyForm.ShowDialog();
                     if (!passKeyForm.Canceled)
                     {
@@ -462,7 +462,7 @@ namespace Steam_Desktop_Authenticator
                         passKeyValid = man.VerifyPasskey(passKey);
                         if (!passKeyValid)
                         {
-                            MessageBox.Show("���� Passkey ��������������. ������� Passkey, ������� �� ������������ ��� ������ ������� �������.");
+                            MessageBox.Show("That passkey is invalid. Please enter the same passkey you used for your other accounts.");
                         }
                     }
                     else
@@ -476,11 +476,11 @@ namespace Steam_Desktop_Authenticator
             man.SaveAccount(androidAccount, passKey != null, passKey);
             if (IsRefreshing)
             {
-                MessageBox.Show("��� ����� ����� ��� ��������.");
+                MessageBox.Show("Your session was refreshed.");
             }
             else
             {
-                MessageBox.Show("��������� �������������� ������� ���������. ����������, �������� ��� ������ : " + androidAccount.RevocationCode);
+                MessageBox.Show("Mobile authenticator successfully linked. Please write down your revocation code: " + androidAccount.RevocationCode);
             }
             this.Close();
         }
