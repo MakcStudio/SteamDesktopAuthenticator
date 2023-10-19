@@ -4,7 +4,7 @@ Created with support from https://bot.csgo.com
 
 ---------------
 
-SDA fixed for the Steam update of 09.08.2023
+SDA fixed for the Steam update of 19.10.2023
 
 If you sell large amounts of skins and do it by hand, mail me
 
@@ -12,7 +12,7 @@ telegram: @makcstudio
 
 or makcstudio@mail.ru
 
-SDA исправлен под обновление Steam от 09.08.2023
+SDA исправлен под обновление Steam от 19.10.2023
 
 Если вы продаете большие объемы скинов и делаете это руками, напишите мне
 
