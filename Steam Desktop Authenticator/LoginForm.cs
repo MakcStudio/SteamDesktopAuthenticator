@@ -60,7 +60,7 @@ namespace Steam_Desktop_Authenticator
 
             if (LoginReason == LoginType.Android)
             {
-                FinishExtract(username, password);
+                //FinishExtract(username, password);
                 return;
             }
             else if (LoginReason == LoginType.Refresh)
@@ -321,7 +321,61 @@ namespace Steam_Desktop_Authenticator
 
             LoginResult response = LoginResult.BadCredentials;
 
-            while ((response = mUserLogin.DoLogin()) != LoginResult.LoginOkay)
+            while ((response = mUserLogin.DoLoginV2()) != LoginResult.LoginOkay)
+            {
+                switch (response)
+                {
+                    case LoginResult.NeedEmail:
+                        InputForm emailForm = new InputForm("Введите код, отправленный на ваш email:");
+                        emailForm.ShowDialog();
+                        if (emailForm.Canceled)
+                        {
+                            this.Close();
+                            return;
+                        }
+
+                        mUserLogin.EmailCode = emailForm.txtBox.Text;
+                        break;
+
+                    case LoginResult.NeedCaptcha:
+                        CaptchaForm captchaForm = new CaptchaForm(mUserLogin.CaptchaGID);
+                        captchaForm.ShowDialog();
+                        if (captchaForm.Canceled)
+                        {
+                            this.Close();
+                            return;
+                        }
+
+                        mUserLogin.CaptchaText = captchaForm.CaptchaCode;
+                        break;
+
+                    case LoginResult.Need2FA:
+                        mUserLogin.TwoFactorCode = androidAccount.GenerateSteamGuardCodeForTime(steamTime);
+                        break;
+
+                    case LoginResult.BadRSA:
+                        MessageBox.Show("Error logging in: Steam вернул \"BadRSA\".", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Close();
+                        return;
+
+                    case LoginResult.BadCredentials:
+                        MessageBox.Show("Error logging in: Username or password некорректные.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Close();
+                        return;
+
+                    case LoginResult.TooManyFailedLogins:
+                        MessageBox.Show("Error logging in: Слишком много неудачных попыток, попробуйте позже.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Close();
+                        return;
+
+                    case LoginResult.GeneralFailure:
+                        MessageBox.Show("Error logging in: Steam вернул \"GeneralFailure\".", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Close();
+                        return;
+                }
+            }
+
+            /*while ((response = mUserLogin.DoLogin()) != LoginResult.LoginOkay)
             {
                 switch (response)
                 {
@@ -361,7 +415,7 @@ namespace Steam_Desktop_Authenticator
                         this.Close();
                         return;
                 }
-            }
+            }*/
 
             androidAccount.Session = mUserLogin.Session;
 
